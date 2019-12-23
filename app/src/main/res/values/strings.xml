@@ -1,10 +1,21 @@
 <resources>
+    <!-- General -->
     <string name="app_name">Hva Quest</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Start Fragment -->
     <string name="welcome_text">Welcome to the HvA Locations Quest!</string>
     <string name="quest_intro">After pressing start, you will start the quest. After each question a picture of a HvA building is shown. Go to the building and start the next quest. At the end there will be a price waiting for you!</string>
     <string name="btn_text">Start Quest</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Question Fragment -->
+    <string name="progress_text">%d%d</string>
+    <string name="answer_text_one">First Answer</string>
+    <string name="answer_text_two">Second Answer</string>
+    <string name="answer_text_three">Third Answer</string>
+    <string name="location_text">Go to the location as shown in the image below.</string>
+    <string name="btnConfirm_text">Confirm</string>
+
+    <!-- Location Fragment -->
+    <string name="btnNextQuestion_text">Next Question</string>
 </resources>

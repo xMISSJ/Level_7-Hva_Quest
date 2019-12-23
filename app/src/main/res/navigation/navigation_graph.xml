@@ -7,7 +7,29 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.hvaquest.StartFragment"
+        android:name="com.example.hvaquest.Fragments.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_questFragment"
+            app:destination="@id/questFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questFragment"
+        android:name="com.example.hvaquest.Fragments.QuestionFragment"
+        android:label="fragment_quest"
+        tools:layout="@layout/fragment_question" >
+        <argument
+            android:name="progressInt"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_questFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.example.hvaquest.Fragments.LocationFragment"
+        android:label="fragment_location"
+        tools:layout="@layout/fragment_location" />
 </navigation>

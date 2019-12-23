@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Hva Quest</string>
     <string name="action_settings">Settings</string>
+    <string name="welcome_text">Welcome to the HvA Locations Quest!</string>
+    <string name="quest_intro">After pressing start, you will start the quest. After each question a picture of a HvA building is shown. Go to the building and start the next quest. At the end there will be a price waiting for you!</string>
+    <string name="btn_text">Start Quest</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

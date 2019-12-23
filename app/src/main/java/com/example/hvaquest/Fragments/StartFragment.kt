@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.hvaquest.R
+import kotlinx.android.synthetic.main.fragment_start.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class StartFragment : Fragment() {
+
+    private var progressIndex = 1;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,5 +25,17 @@ class StartFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_start, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btnStart.setOnClickListener{
+            startQuest();
+        }
+    }
 
+    private fun startQuest() {
+        findNavController().navigate(
+            StartFragmentDirections.actionStartFragmentToQuestFragment(
+                progressIndex
+            ))
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.hvaquest
 
-class QuestRepository {
+class QuestionRepository {
     fun getHvaQuest(): List<Question> {
         return arrayListOf(
             Question(
@@ -64,5 +64,13 @@ class QuestRepository {
                 R.drawable.koetsier_montaignehuis
             )
         )
+    }
+
+    fun getQuestion(index: Int) : Question? {
+        return getHvaQuest()[index]
+    }
+
+    fun getListSize() : Int {
+        return getHvaQuest().size;
     }
 }

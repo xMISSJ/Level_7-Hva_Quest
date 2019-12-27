@@ -22,5 +22,13 @@ class QuestionFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_question, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews();
+    }
+
+    private fun initViews(){
+
+    }
 
 }

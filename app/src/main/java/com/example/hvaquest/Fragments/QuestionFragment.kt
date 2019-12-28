@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -17,7 +16,6 @@ import com.example.hvaquest.Question
 import com.example.hvaquest.R
 import com.example.hvaquest.ViewModel.QuestViewModel
 import kotlinx.android.synthetic.main.fragment_question.*
-import kotlinx.android.synthetic.main.fragment_question.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -28,6 +26,7 @@ class QuestionFragment : Fragment() {
     private lateinit var myView: View;
     private lateinit var question: Question;
 
+    // This is progressInt. It keeps track of the quests.
     private val args: QuestionFragmentArgs by navArgs();
 
     // Called after onCreate. Graphical initialisations.
@@ -78,10 +77,9 @@ class QuestionFragment : Fragment() {
 
             // Compares whether the checked RadioButton's text is the same as the question.correct answer text.
             if ( choiceText == question.correctAnswer) {
-                findNavController().navigate(
-                    QuestionFragmentDirections.actionQuestionFragmentToLocationFragment(
-                        args.progressInt
-                    ))
+                // Navigate to LocationFragment with progressInt as argument.
+                val action = QuestionFragmentDirections.actionQuestionFragmentToLocationFragment(args.progressInt)
+                findNavController().navigate(action);
             }
         } else {
             Toast.makeText(context, "Please pick an answer.", Toast.LENGTH_LONG).show();

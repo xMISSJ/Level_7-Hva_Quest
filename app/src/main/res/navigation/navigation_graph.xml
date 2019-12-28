@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_startFragment_to_questionFragment"
             app:destination="@id/questionFragment" />
+        <argument
+            android:name="pageIndex"
+            app:argType="integer"
+            android:defaultValue="1" />
     </fragment>
     <fragment
         android:id="@+id/endFragment"

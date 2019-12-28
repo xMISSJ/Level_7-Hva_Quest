@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.hvaquest.R
 import kotlinx.android.synthetic.main.fragment_start.*
 
@@ -15,7 +16,8 @@ import kotlinx.android.synthetic.main.fragment_start.*
  */
 class StartFragment : Fragment() {
 
-    private var progressIndex = 1;
+    // Use the progressInt from args in StartFragment to keep track of the pages.
+    private val args: StartFragmentArgs by navArgs();
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +35,9 @@ class StartFragment : Fragment() {
     }
 
     private fun startQuest() {
-        findNavController().navigate(
-            StartFragmentDirections.actionStartFragmentToQuestionFragment(
-                progressIndex
-            ))
+        // Navigate to QuestionFragment with ProgressInt as argument.
+        // args.progressInt has value of 1 by default.
+        val action = StartFragmentDirections.actionStartFragmentToQuestionFragment(args.pageIndex);
+        findNavController().navigate(action);
     }
 }

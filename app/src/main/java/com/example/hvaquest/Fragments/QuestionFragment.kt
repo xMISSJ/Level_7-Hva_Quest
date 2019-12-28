@@ -6,12 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.hvaquest.Question
 
 import com.example.hvaquest.R
 import com.example.hvaquest.ViewModel.QuestViewModel
 import kotlinx.android.synthetic.main.fragment_question.*
+import kotlinx.android.synthetic.main.fragment_question.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -19,15 +25,16 @@ import kotlinx.android.synthetic.main.fragment_question.*
 class QuestionFragment : Fragment() {
 
     private lateinit var viewModel : QuestViewModel;
-    private val args: QuestionFragmentArgs by navArgs()
+    private lateinit var myView: View;
+    private lateinit var question: Question;
+
+    private val args: QuestionFragmentArgs by navArgs();
 
     // Called after onCreate. Graphical initialisations.
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question, container, false)
-
-        activity!!.setTitle("Question");
+        myView = inflater.inflate(R.layout.fragment_question, container, false);
+        return myView;
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,7 +49,7 @@ class QuestionFragment : Fragment() {
     }
 
     private fun setFragmentValues(){
-        var question = viewModel.getQuestion(args.progressInt);
+        question = viewModel.getQuestion(args.progressInt);
 
         // Page progress is assigned using the QuestionFragmentArgs.
         // This progressInt is from the navigation_graph.
@@ -64,6 +71,20 @@ class QuestionFragment : Fragment() {
     }
 
     private fun onClick(){
+        // If choice one of the buttons is selected.
+        if (rgQuestions.checkedRadioButtonId != -1) {
 
+            val choiceText = myView.findViewById<RadioButton>(rgQuestions.checkedRadioButtonId)?.text;
+
+            // Compares whether the checked RadioButton's text is the same as the question.correct answer text.
+            if ( choiceText == question.correctAnswer) {
+                findNavController().navigate(
+                    QuestionFragmentDirections.actionQuestionFragmentToLocationFragment(
+                        args.progressInt
+                    ))
+            }
+        } else {
+            Toast.makeText(context, "Please pick an answer.", Toast.LENGTH_LONG).show();
+        }
     }
 }

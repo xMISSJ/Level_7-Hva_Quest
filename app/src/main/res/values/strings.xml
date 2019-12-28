@@ -19,4 +19,8 @@
     <!-- Location Fragment -->
     <string name="btnNextQuestion_text">Next Question</string>
     <string name="question_text">Question?</string>
+
+    <!-- End Fragment -->
+    <string name="congratulations_text">Congratulations, you finished the quest!\n Here is your price.</string>
+    <string name="button_text">Finish</string>
 </resources>

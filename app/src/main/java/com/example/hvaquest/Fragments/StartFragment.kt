@@ -34,7 +34,7 @@ class StartFragment : Fragment() {
 
     private fun startQuest() {
         findNavController().navigate(
-            StartFragmentDirections.actionStartFragmentToQuestFragment(
+            StartFragmentDirections.actionStartFragmentToQuestionFragment(
                 progressIndex
             ))
     }

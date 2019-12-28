@@ -11,25 +11,41 @@
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action_startFragment_to_questFragment"
-            app:destination="@id/questFragment" />
+            android:id="@+id/action_startFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/questFragment"
-        android:name="com.example.hvaquest.Fragments.QuestionFragment"
-        android:label="fragment_quest"
-        tools:layout="@layout/fragment_question" >
-        <argument
-            android:name="progressInt"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <action
-            android:id="@+id/action_questFragment_to_locationFragment"
-            app:destination="@id/locationFragment" />
-    </fragment>
+        android:id="@+id/endFragment"
+        android:name="com.example.hvaquest.Fragments.EndFragment"
+        android:label="fragment_end"
+        tools:layout="@layout/fragment_end" />
     <fragment
         android:id="@+id/locationFragment"
         android:name="com.example.hvaquest.Fragments.LocationFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_location" />
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment_to_endFragment"
+            app:destination="@id/endFragment" />
+        <action
+            android:id="@+id/action_locationFragment_to_questionFragment"
+            app:destination="@id/questionFragment" />
+        <argument
+            android:name="progressInt"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.example.hvaquest.Fragments.QuestionFragment"
+        android:label="fragment_question"
+        tools:layout="@layout/fragment_question" >
+        <action
+            android:id="@+id/action_questionFragment_to_locationFragment"
+            app:destination="@id/locationFragment" />
+        <argument
+            android:name="progressInt"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

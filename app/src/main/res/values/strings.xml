@@ -9,7 +9,7 @@
     <string name="btn_text">Start Quest</string>
 
     <!-- Question Fragment -->
-    <string name="progress_text">%d%d</string>
+    <string name="progress_text">%d/%d</string>
     <string name="answer_text_one">First Answer</string>
     <string name="answer_text_two">Second Answer</string>
     <string name="answer_text_three">Third Answer</string>

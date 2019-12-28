@@ -22,18 +22,21 @@ class QuestionFragment : Fragment() {
     private val args: QuestionFragmentArgs by navArgs()
 
     // Called after onCreate. Graphical initialisations.
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_question, container, false)
+
+        activity!!.setTitle("Question");
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initViews();
+        btnConfirm.setOnClickListener {
+            onClick();
+        }
+
         initViewModel();
         setFragmentValues();
     }
@@ -45,7 +48,7 @@ class QuestionFragment : Fragment() {
         // This progressInt is from the navigation_graph.
         // The argument is defined below the <argument/> tab in questFragment.
         // viewModel.getListSize() gets the length of the QuestionRepository.
-        tvProgress.text = "{args.progressInt}/{viewModel.getListSize()}"
+        tvProgress.text = getString(R.string.progress_text, args.progressInt, viewModel.getListSize())
 
         // Assign text view for question to the actual String from QuestionRepository.
         tvQuestion.text = question.question;
@@ -53,16 +56,14 @@ class QuestionFragment : Fragment() {
         // Assign the radio buttons to the choices in the QuestionRepository.
         answer1.text = question.choices[0];
         answer2.text = question.choices[1];
-        answer3.text = question.choices[3];
-
+        answer3.text = question.choices[2];
     }
 
     private fun initViewModel(){
         viewModel = ViewModelProviders.of(this).get(QuestViewModel::class.java);
     }
 
-    private fun initViews(){
+    private fun onClick(){
 
     }
-
 }

@@ -46,13 +46,12 @@ class QuestionFragment : Fragment() {
 
     private fun initViews(){
         question = viewModel.getQuestion(args.progressIndex);
-        var pageIndex = args.pageIndex + 1;
 
         // Page progress is assigned using the QuestionFragmentArgs.
         // This progressInt is from the navigation_graph.
-        // Corrected Index, because the array starts at 0, but the page starts at 1.
         // viewModel.getListSize() gets the length of the QuestionRepository.
-        tvProgress.text = getString(R.string.progress_text, pageIndex, viewModel.getListSize())
+        // args.pageIndex starts at 1, because it's its default value.
+        tvProgress.text = getString(R.string.progress_text, args.pageIndex, viewModel.getListSize())
 
         // Assign text view for question to the actual String from QuestionRepository.
         tvQuestion.text = question.question;

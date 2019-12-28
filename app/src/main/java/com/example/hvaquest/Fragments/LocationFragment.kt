@@ -28,7 +28,7 @@ class LocationFragment : Fragment() {
     private lateinit var locationImage: ImageView;
 
     // This is progressInt. It keeps track of the locations.
-    private val args: StartFragmentArgs by navArgs();
+    private val args: LocationFragmentArgs by navArgs();
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

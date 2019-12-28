@@ -1,6 +1,5 @@
 package com.example.hvaquest.Fragments
 
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,9 +16,6 @@ import com.example.hvaquest.R
 import com.example.hvaquest.ViewModel.QuestViewModel
 import kotlinx.android.synthetic.main.fragment_question.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class QuestionFragment : Fragment() {
 
     private lateinit var viewModel : QuestViewModel;
@@ -43,18 +39,20 @@ class QuestionFragment : Fragment() {
             onClick();
         }
 
-        initViewModel();
-        setFragmentValues();
+        viewModel = ViewModelProviders.of(this).get(QuestViewModel::class.java);
+
+        initViews();
     }
 
-    private fun setFragmentValues(){
-        question = viewModel.getQuestion(args.progressInt);
+    private fun initViews(){
+        question = viewModel.getQuestion(args.progressIndex);
+        var pageIndex = args.pageIndex + 1;
 
         // Page progress is assigned using the QuestionFragmentArgs.
         // This progressInt is from the navigation_graph.
-        // The argument is defined below the <argument/> tab in questFragment.
+        // Corrected Index, because the array starts at 0, but the page starts at 1.
         // viewModel.getListSize() gets the length of the QuestionRepository.
-        tvProgress.text = getString(R.string.progress_text, args.progressInt, viewModel.getListSize())
+        tvProgress.text = getString(R.string.progress_text, pageIndex, viewModel.getListSize())
 
         // Assign text view for question to the actual String from QuestionRepository.
         tvQuestion.text = question.question;
@@ -63,10 +61,6 @@ class QuestionFragment : Fragment() {
         answer1.text = question.choices[0];
         answer2.text = question.choices[1];
         answer3.text = question.choices[2];
-    }
-
-    private fun initViewModel(){
-        viewModel = ViewModelProviders.of(this).get(QuestViewModel::class.java);
     }
 
     private fun onClick(){
@@ -78,11 +72,13 @@ class QuestionFragment : Fragment() {
             // Compares whether the checked RadioButton's text is the same as the question.correct answer text.
             if ( choiceText == question.correctAnswer) {
                 // Navigate to LocationFragment with progressInt as argument.
-                val action = QuestionFragmentDirections.actionQuestionFragmentToLocationFragment(args.progressInt)
+                val action = QuestionFragmentDirections.actionQuestionFragmentToLocationFragment(args.progressIndex, args.pageIndex);
                 findNavController().navigate(action);
+            } else {
+                Toast.makeText(context, "Wrong answer.", Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(context, "Please pick an answer.", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Please select an answer.", Toast.LENGTH_LONG).show();
         }
     }
 }

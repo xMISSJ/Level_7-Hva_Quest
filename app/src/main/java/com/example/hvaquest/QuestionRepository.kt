@@ -66,7 +66,7 @@ class QuestionRepository {
         )
     }
 
-    fun getQuestion(index: Int) : Question? {
+    fun getQuestion(index: Int) : Question {
         return getHvaQuest()[index]
     }
 

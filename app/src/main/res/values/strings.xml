@@ -18,4 +18,5 @@
 
     <!-- Location Fragment -->
     <string name="btnNextQuestion_text">Next Question</string>
+    <string name="question_text">Question?</string>
 </resources>

@@ -11,7 +11,7 @@ class QuestViewModel : ViewModel() {
 
     val questions = MutableLiveData<List<Question>>();
 
-    fun getQuestion(index: Int) : Question? {
+    fun getQuestion(index: Int) : Question {
         return questionRepository.getQuestion(index);
     }
 

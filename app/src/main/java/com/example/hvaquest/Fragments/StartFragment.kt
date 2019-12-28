@@ -29,7 +29,6 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         btnStart.setOnClickListener{
             startQuest();
-
         }
     }
 

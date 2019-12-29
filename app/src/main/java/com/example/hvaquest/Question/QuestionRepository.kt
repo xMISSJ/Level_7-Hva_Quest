@@ -1,4 +1,6 @@
-package com.example.hvaquest
+package com.example.hvaquest.Question
+
+import com.example.hvaquest.R
 
 class QuestionRepository {
     fun getHvaQuest(): List<Question> {

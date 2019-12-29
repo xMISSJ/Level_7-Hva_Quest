@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.hvaquest.Question
+import com.example.hvaquest.Question.Question
 
 import com.example.hvaquest.R
 import com.example.hvaquest.ViewModel.QuestViewModel
@@ -21,6 +21,7 @@ class QuestionFragment : Fragment() {
     private lateinit var viewModel : QuestViewModel;
     private lateinit var myView: View;
     private lateinit var question: Question;
+    var counter: Int = 0;
 
     // This is progressInt. It keeps track of the quests.
     private val args: QuestionFragmentArgs by navArgs();
@@ -29,6 +30,7 @@ class QuestionFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         myView = inflater.inflate(R.layout.fragment_question, container, false);
+        activity?.setTitle("Question");
         return myView;
     }
 
@@ -60,6 +62,9 @@ class QuestionFragment : Fragment() {
         answer1.text = question.choices[0];
         answer2.text = question.choices[1];
         answer3.text = question.choices[2];
+
+        // Track the questIndex so the MainActivity.kt can make check on backButton.
+        viewModel.questIndexTracker = args.progressIndex;
     }
 
     private fun onClick(){

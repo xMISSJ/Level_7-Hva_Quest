@@ -1,4 +1,4 @@
-package com.example.hvaquest
+package com.example.hvaquest.Question
 
 data class Question(
     var question: String,

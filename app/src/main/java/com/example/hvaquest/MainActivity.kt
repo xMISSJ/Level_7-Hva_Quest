@@ -40,18 +40,18 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController(R.id.navHostFragment)
-        return when (item?.itemId) {
+        when (item?.itemId) {
             android.R.id.home -> {
                 // Check whether there is a progress in the quest.
-                if(viewModel.questIndexTracker > 0) {
+                if (viewModel.questIndexTracker > 0) {
                     viewModel.questIndexTracker -= 1;
                 }
                 // Navigate up in the hierarchy of fragments.
-                navController.navigateUp()
+                navController.navigateUp();
                 return true
             }
-            else -> super.onOptionsItemSelected(item)
         }
+            return super.onOptionsItemSelected(item);
     }
 
 }

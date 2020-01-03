@@ -30,7 +30,7 @@ class LocationFragment : Fragment() {
         // Inflate the layout for this fragment
         myView = inflater.inflate(R.layout.fragment_location, container, false);
         locationImage = myView.rootView.findViewById(R.id.ivLocation);
-        activity?.setTitle("Location Clue");
+        activity?.title = "Location Clue";
 
         return myView;
     }
